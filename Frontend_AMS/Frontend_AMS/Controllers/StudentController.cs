@@ -1,45 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Frontend_AMS.Models;
-using Frontend_AMS.Data;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace Frontend_AMS.Controllers
 {
     public class StudentController : Controller
     {
-        private readonly AppDbContext _context;
-
-        public StudentController(AppDbContext context)
-        {
-            _context = context;
-        }
         public IActionResult Index()
         {
-            return View(_context.Student.ToList());
+            return View();
         }
-        [HttpPost]
-        public IActionResult Create(StudentModel student)
+        public IActionResult Create()
         {
-            _context.Student.Add(student);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        [HttpPost]
-        public IActionResult Edit(StudentModel student)
-        {
-            _context.Student.Update(student);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        [HttpPost]
-        public IActionResult Delete(int id)
-        {
-            var student = _context.Student.Find(id);
-            if (student != null)
+            var courses = new List<SelectListItem>
             {
-                _context.Student.Remove(student);
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Index");
+                new SelectListItem { Value = "BSIT", Text = "BSIT" },
+                new SelectListItem { Value = "BSME", Text = "BSME" },
+                new SelectListItem { Value = "BTVETED", Text = "BTVETED" }
+            };
+            ViewBag.Courses = courses;
+            return RedirectToAction();
+        }
+        public IActionResult Edit()
+        {
+            return RedirectToAction();
+        }
+        public IActionResult Delete()
+        {
+            return RedirectToAction();
         }
     }
 }
