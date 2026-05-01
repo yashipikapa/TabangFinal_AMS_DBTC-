@@ -1,7 +1,14 @@
 ﻿@{
 	@using Frontend_AMS.Models;
-    @model IEnumerable<StudentModel>
+    @model IEnumerable<StudentModel>    
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
+}
+@section Scripts {
+    <script src="~/js/modals.js" asp-append-version="true"></script>
+}
+
 <div class="card">
     <span class="card-title">Student List</span>
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">Add Student</button>
@@ -51,7 +58,11 @@
                     <option value="4">4th Year</option>
                 </select>
                 <input id="createEmail" class="form-control mb-2" placeholder="Email" />
-                <input id="createStatus" class="form-control mb-2" placeholder="Status" />
+                <select id="createStatus" class="form-control mb-2" placeholder="Status">
+                    <option value="">Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" id="saveCreateBtn">Save</button>
@@ -84,7 +95,11 @@
                     <option value="4">4th Year</option>
                 </select>
                 <input id="editEmail" class="form-control mb-2" />
-                <input id="editStatus" class="form-control mb-2" />
+                <select id="editStatus" class="form-control mb-2">
+                    <option value="">Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-warning" id="saveEditBtn">Update</button>
@@ -109,4 +124,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>  
