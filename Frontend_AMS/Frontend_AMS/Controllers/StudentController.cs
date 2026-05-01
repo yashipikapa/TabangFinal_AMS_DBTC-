@@ -11,22 +11,15 @@ namespace Frontend_AMS.Controllers
         }
         public IActionResult Create()
         {
-            var courses = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "BSIT", Text = "BSIT" },
-                new SelectListItem { Value = "BSME", Text = "BSME" },
-                new SelectListItem { Value = "BTVETED", Text = "BTVETED" }
-            };
-            ViewBag.Courses = courses;
-            return RedirectToAction();
+            return View();
         }
         public IActionResult Edit()
         {
-            return RedirectToAction();
+            return View();
         }
         public IActionResult Delete()
         {
-            return RedirectToAction();
+            return View();
         }
     }
 }
